@@ -2,19 +2,9 @@
 
 require_once('model/Manager.php');
 
-class MembersManager extends Manager
+class AdminManager extends Manager
 {
-	public function newMember($pseudo, $password, $email)
-	{
-	    $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	    $db = $this->dbConnect();
-	    $members = $db->prepare('INSERT INTO members(groupes_id, pseudo, password, email, date_inscription) VALUES(2, ?, ?, ?, NOW())');
-	    $affectedLines = $members->execute(array($pseudo, $pass_hash, $email));
-
-	return $affectedLines;
-	}
-
-	public function connectMember($pseudo, $password)
+	public function connectAdmin($pseudo, $password)
 	{
 		$db = $this->dbConnect();
 		$pseudo = $_POST['pseudo'];

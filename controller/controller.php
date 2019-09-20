@@ -2,7 +2,7 @@
 
 require_once('model/PostManager.php');
 require_once('model/CommentsManager.php');
-require_once('model/MembersManager.php');
+require_once('model/AdminManager.php');
 
 function post()
 {
@@ -30,9 +30,8 @@ function addComment($postId, $author, $email, $comment)
     }
 }
 
-function connectUser()
+function connectAdministrator()
 {
-    $membersManager = new MembersManager();
-
-    $connectUser = $membersManager->connectMember($_POST['pseudo'], $_POST['password']);
+    $adminManager = new AdminManager();
+    $connectAdministrator = $adminManager->connectAdmin($_POST['pseudo'], $_POST['password']);
 }

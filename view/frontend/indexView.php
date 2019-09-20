@@ -31,6 +31,7 @@
             <img src="public/img/episode6.jpg">
             <figcaption>Billet simple pour l'Alaska<br>Episode 6</figcaption>
             </a></figure>
+
 <?php $article_content = ob_get_clean(); ?>
 
 <?php $comment_content = "" ?>

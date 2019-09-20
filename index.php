@@ -10,17 +10,9 @@ try {
 	    elseif ($_GET['action'] == 'subscribe') {
 	    	require('view/frontend/subscriptionView.php');
 	    }
-	    elseif ($_GET['action'] == 'newMember') {
-	    	if ((!empty($_POST['pseudo'])) && (!empty($_POST['password'])) && (!empty($_POST['email']))) {
-	    		addMember($_POST['pseudo'], $_POST['password'], $_POST['email']);
-	    		require('view/frontend/indexView.php');
-	    	} else {
-	                throw new Exception('Erreur : tous les champs ne sont pas remplis !');
-	            }
-	    }
 	    elseif ($_GET['action'] == 'connect') {
 	    	if ((!empty($_POST['pseudo'])) && (!empty($_POST['password']))) {
-	    		connectUser($_POST['pseudo'], $_POST['password']);
+	    		connectAdministrator($_POST['pseudo'], $_POST['password']);
 	    		require('view/frontend/indexView.php');
 	    	} else {
 	                throw new Exception('Erreur : tous les champs ne sont pas remplis !');
@@ -44,7 +36,6 @@ try {
 		require('view/frontend/indexView.php');
 	}
 }
-
 catch(Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }
