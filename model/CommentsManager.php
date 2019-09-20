@@ -18,27 +18,6 @@ class CommentsManager extends Manager
 	    $db = $this->dbConnect();
 	    $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
 	    $affectedLines = $comments->execute(array($postId, $author, $comment));
-
 	    return $affectedLines;
 	}
-
-	/*
-	public function memberSubscription()
-	{
-	    $db = $this->dbConnect();
-	    $members = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-	    $affectedLines = $comments->execute(array($postId, $author, $comment));
-
-	    return $affectedLines;
-	}
-
-	public function memberConnexion($pseudo, $password)
-	{
-	    $db = $this->dbConnect();
-	    $members = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-	    $affectedLines = $comments->execute(array($postId, $author, $comment));
-
-	    return $affectedLines;
-	}
-	*/
 }

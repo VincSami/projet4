@@ -1,10 +1,3 @@
-<?php
-
-setcookie('pseudo', $_GET['pseudo'], time() + 365*24*3600, null, null, false, true);
-setcookie('password', $_GET['password'], time() + 365*24*3600, null, null, false, true);
-?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
