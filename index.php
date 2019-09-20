@@ -1,19 +1,17 @@
 <?php
 
-require('controller/controller.php');
+require('controller/frontendcontroller.php');
+require('controller/backendcontroller.php');
 
 try {
 	if (isset($_GET['action'])) {
 	    if ($_GET['action'] == 'post') {
 	        post();
 	    }
-	    elseif ($_GET['action'] == 'subscribe') {
-	    	require('view/frontend/subscriptionView.php');
-	    }
 	    elseif ($_GET['action'] == 'connect') {
 	    	if ((!empty($_POST['pseudo'])) && (!empty($_POST['password']))) {
 	    		connectAdministrator($_POST['pseudo'], $_POST['password']);
-	    		require('view/frontend/indexView.php');
+	    		listPostsAdmin();
 	    	} else {
 	                throw new Exception('Erreur : tous les champs ne sont pas remplis !');
 	            }
@@ -26,12 +24,24 @@ try {
 	        } else {
 	                throw new Exception('Erreur : tous les champs ne sont pas remplis !');
 	            }
-	    }      
-	    else {
-	        throw new Exception("Erreur : aucun identifiant de billet envoyé");
 	    }
+	    elseif ($_GET['action'] == 'delete') {
+	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+	        	deletepost();
+	            }  
+		    else {
+		        throw new Exception("Erreur : aucun identifiant de billet envoyé");
+		    }
+		}
+		elseif ($_GET['action'] == 'update') {
+	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+	        	updatepost();
+	            }  
+		    else {
+		        throw new Exception("Erreur : aucun identifiant de billet envoyé");
+		    }
+		}
 	}
-
 	else{
 		listPosts();
 	}

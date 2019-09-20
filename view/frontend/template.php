@@ -40,9 +40,10 @@
                     <form id="adminAccess" class="form-inline my-2 my-lg-0" action="index.php?action=connect" method="post">
                         <input class="form-control mr-sm-2" type="text" id="pseudo" name="pseudo" placeholder="Identifiant" aria-label="pseudo">
                         <input class="form-control mr-sm-2" type="password" id="password" name="password" placeholder="Mot de passe" aria-label="password">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Se connecter</button>
+                        <button id="submitAccess" class="btn btn-outline-success my-2 my-sm-0" type="submit">Se connecter</button>
                     </form>
                     <button id="cancelAdminAccess">Annuler</button>
+                    <button id="deconnexion">Déconnexion</button>
                   </div>
             </nav>
             <img class="fullwidth" src="public/img/alaska_accueil.jpg">

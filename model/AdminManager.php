@@ -20,7 +20,7 @@ class AdminManager extends Manager
 		}
 		else {
     		if ($isPasswordCorrect) {
-        		echo 'Vous êtes connecté !';
+        		echo 'Bonjour ' . $pseudo . '!';
     		} else {
         	echo 'Mauvais identifiant ou mot de passe !';
     		}
