@@ -4,6 +4,13 @@ require_once('model/PostManager.php');
 require_once('model/CommentsManager.php');
 require_once('model/AdminManager.php');
 
+function listPosts()
+{
+    $postManager = new PostManager();
+    $posts = $postManager->getPosts();
+    require('view/frontend/indexView.php');
+}
+
 function post()
 {
     $postManager = new PostManager();

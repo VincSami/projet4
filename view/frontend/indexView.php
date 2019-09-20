@@ -7,31 +7,18 @@
 <?php $main_content_subtitle = 'Comme à son habitude, Jean Forteroche surprend son public par son dernier livre. Délivré son forme de 6 épisodes, "Billet simple pour l\'Alaska" pourrait être le roman le plus haletant de l\'écrivain.'; ?>
 
 <?php ob_start(); ?>
-            <figure><a href="index.php?action=post&amp;id=1">
-            <img src="public/img/episode1.jpg">
-            <figcaption>Billet simple pour l'Alaska<br>Episode 1</figcaption>
+      <?php
+        while ($post = $posts->fetch())
+        {
+      ?>
+            <figure><a href="index.php?action=post&amp;id=<?= $post['id'] ?>">
+            <img src="public/img/episode<?= $post['id'] ?>.jpg">
+            <figcaption>Billet simple pour l'Alaska<br><?= htmlspecialchars($post['title']) ?></figcaption>
             </a></figure>
-            <figure><a href="index.php?action=post&amp;id=2">
-            <img src="public/img/episode2.jpg">
-            <figcaption>Billet simple pour l'Alaska<br>Episode 2</figcaption>
-            </a></figure>
-            <figure><a href="index.php?action=post&amp;id=3">
-            <img src="public/img/episode3.jpg">
-            <figcaption>Billet simple pour l'Alaska<br>Episode 3</figcaption>
-            </a></figure>
-            <figure><a href="index.php?action=post&amp;id=4">
-            <img src="public/img/episode4.jpg">
-            <figcaption>Billet simple pour l'Alaska<br>Episode 4</figcaption>
-            </a></figure>
-            <figure><a href="index.php?action=post&amp;id=5">
-            <img src="public/img/episode5.jpg">
-            <figcaption>Billet simple pour l'Alaska<br>Episode 5</figcaption>
-            </a></figure>
-            <figure><a href="index.php?action=post&amp;id=6">
-            <img src="public/img/episode6.jpg">
-            <figcaption>Billet simple pour l'Alaska<br>Episode 6</figcaption>
-            </a></figure>
-
+      <?php
+        }
+      $posts->closeCursor();
+      ?>      
 <?php $article_content = ob_get_clean(); ?>
 
 <?php $comment_content = "" ?>

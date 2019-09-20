@@ -33,7 +33,7 @@ try {
 	}
 
 	else{
-		require('view/frontend/indexView.php');
+		listPosts();
 	}
 }
 catch(Exception $e) {
