@@ -36,6 +36,10 @@ header h2{
 	background-color: none;
 }
 
+#adminAccess {
+    display: none;
+}
+
 #introduction{
 	margin-top: 100px;
 	margin-bottom: 50px;
