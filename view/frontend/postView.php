@@ -13,6 +13,8 @@
         <form id="postComment" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
                 <label for="author">Auteur</label><br />
                 <input type="text" id="author" name="author" placeholder="Votre pseudo" /><br><br>
+                <label for="email">Email</label><br />
+                <input type="email" id="email" name="email" placeholder="Votre email" /><br><br>
                 <label for="comment">Commentaire</label><br />
                 <textarea id="comment" name="comment" placeholder="Votre commentaire"></textarea><br>
                 <input type="submit" value="Valider"/>

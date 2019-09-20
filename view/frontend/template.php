@@ -41,8 +41,8 @@
                         <input class="form-control mr-sm-2" type="text" id="pseudo" name="pseudo" placeholder="Identifiant" aria-label="pseudo">
                         <input class="form-control mr-sm-2" type="password" id="password" name="password" placeholder="Mot de passe" aria-label="password">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Se connecter</button>
-                        <button class="btn btn-outline-success my-2 my-sm-0">Annuler</button>
                     </form>
+                    <button id="cancelAdminAccess">Annuler</button>
                   </div>
             </nav>
             <img class="fullwidth" src="public/img/alaska_accueil.jpg">

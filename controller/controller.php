@@ -15,11 +15,11 @@ function post()
     require('view/frontend/postView.php');
 }
 
-function addComment($postId, $author, $comment)
+function addComment($postId, $author, $email, $comment)
 {
     $commentsManager = new CommentsManager();
 
-    $affectedLines = $commentsManager->postComment($postId, $author, $comment);
+    $affectedLines = $commentsManager->postComment($postId, $author, $email, $comment);
 
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -27,17 +27,6 @@ function addComment($postId, $author, $comment)
 
     else {
         header('Location: index.php?action=post&id=' . $postId);
-    }
-}
-
-function addMember($pseudo, $password, $email)
-{
-    $membersManager = new MembersManager();
-
-    $affectedLines = $membersManager->newMember($pseudo, $password, $email);
-
-    if ($affectedLines === false) {
-        throw new Exception('Impossible de finaliser votre inscription !');
     }
 }
 
