@@ -7,6 +7,9 @@
 <?php $main_content_subtitle = 'Comme à son habitude, Jean Forteroche surprend son public par son dernier livre. Délivré son forme de 6 épisodes, "Billet simple pour l\'Alaska" pourrait être le roman le plus haletant de l\'écrivain.'; ?>
 
 <?php ob_start(); ?>
+      <div id="newPost">
+        <p>Ecrire un nouvel épisode</p>
+      </div>
       <?php
         while ($post = $posts->fetch())
         {
@@ -25,4 +28,4 @@
 
 <?php $comment_content = "" ?>
 
-<?php require('view/frontend/template.php'); ?>
+<?php require('template.php'); ?>

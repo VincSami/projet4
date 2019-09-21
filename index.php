@@ -16,6 +16,9 @@ try {
 	                throw new Exception('Erreur : tous les champs ne sont pas remplis !');
 	            }
 	    }
+	    elseif ($_GET['action'] == 'disconnect') {
+	    		listPosts();
+	    }
 	    elseif ($_GET['action'] == 'addComment') {
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {
 	            if (!empty($_POST['author']) && !empty($_POST['comment'])) {
@@ -27,20 +30,12 @@ try {
 	    }
 	    elseif ($_GET['action'] == 'delete') {
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {
-	        	deletepost();
-	            }  
+	        	erasePost();
+	        }  
 		    else {
 		        throw new Exception("Erreur : aucun identifiant de billet envoyé");
 		    }
-		}
-		elseif ($_GET['action'] == 'update') {
-	        if (isset($_GET['id']) && $_GET['id'] > 0) {
-	        	updatepost();
-	            }  
-		    else {
-		        throw new Exception("Erreur : aucun identifiant de billet envoyé");
-		    }
-		}
+		}	
 	}
 	else{
 		listPosts();

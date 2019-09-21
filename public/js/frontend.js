@@ -1,8 +1,8 @@
 const adminButton = document.getElementById("adminButton");
-const adminAccess = document.getElementById("adminAccess");
+const form = document.getElementById("adminAccess");
 const cancelAdminAccess = document.getElementById("cancelAdminAccess");
-const submitAdminAccess = document.getElementById("submitAccess");
-const deconnexionButton = document.getElementById("deconnexion");
+const exitAdmin = document.getElementById("exitAdmin");
+
 
 adminButton.addEventListener("click", function() {
 	adminButton.style.display = "none";
@@ -16,9 +16,8 @@ cancelAdminAccess.addEventListener("click", function() {
 	cancelAdminAccess.style.display = "none";
 });
 
-submitAdminAccess.addEventListener("click", function() {
+form.addEventListener("submit", function() {
 	adminButton.style.display = "none";
 	adminAccess.style.display = "none";
 	cancelAdminAccess.style.display = "none";
-	deconnexionButton.style.display = "block";
 });

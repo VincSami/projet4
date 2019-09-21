@@ -18,7 +18,7 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                       <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="view/backend/indexAdminView.php">Accueil <span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,16 +34,8 @@
                         </div>
                       </li>
                     </ul>
-                    <div id="admin">
-                      <button id="adminButton">Espace administrateur</button>
-                    </div>
-                    <form id="adminAccess" class="form-inline my-2 my-lg-0" action="index.php?action=connect" method="post">
-                        <input class="form-control mr-sm-2" type="text" id="pseudo" name="pseudo" placeholder="Identifiant" aria-label="pseudo">
-                        <input class="form-control mr-sm-2" type="password" id="password" name="password" placeholder="Mot de passe" aria-label="password">
-                        <button id="submitAccess" class="btn btn-outline-success my-2 my-sm-0" type="submit">Se connecter</button>
-                    </form>
-                    <button id="cancelAdminAccess">Annuler</button>
-                  </div>
+                <button id="exitAdmin"><a href ="index.php?action=disconnect">Se déconnecter</a></button>
+                </div>
             </nav>
             <img class="fullwidth" src="public/img/alaska_accueil.jpg">
             <h1><?= $page_title ?></h1><br>
@@ -94,6 +86,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://cdn.tiny.cloud/1/uieuh603nflj6edzyxfvvoeiyut4ea1meflkbv78itiw9awg/tinymce/5/tinymce.min.js"></script>
-        <script type="text/javascript" src="public/js/frontend.js"></script>
+        <script type="text/javascript" src="public/js/backend.js"></script>
     </body>
 </html>

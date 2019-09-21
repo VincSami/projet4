@@ -10,3 +10,10 @@ function listPostsAdmin()
     $posts = $postManager->getPosts();
     require('view/backend/indexAdminView.php');
 }
+
+function erasePost()
+{
+    $postManager = new PostManager();
+    $deletepost = $postManager->deletepost($_GET['id']);
+    require('view/backend/indexAdminView.php');
+}
