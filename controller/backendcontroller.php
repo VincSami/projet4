@@ -11,9 +11,36 @@ function listPostsAdmin()
     require('view/backend/indexAdminView.php');
 }
 
+function deletePostAdmin()
+{
+    $postManager = new PostManager();
+    $commentsManager = new CommentsManager();
+
+    $postAdmin = $postManager->getPost($_GET['id']);
+    $comments = $commentsManager->getComments($_GET['id']);
+
+    require('view/backend/deletePostView.php');
+}
+
 function erasePost()
 {
     $postManager = new PostManager();
-    $deletepost = $postManager->deletepost($_GET['id']);
-    require('view/backend/indexAdminView.php');
+    $deletePost = $postManager->deletePost($_GET['id']);
+}
+
+function updatePostAdmin()
+{
+    $postManager = new PostManager();
+    $commentsManager = new CommentsManager();
+
+    $postAdmin = $postManager->getPost($_GET['id']);
+    $comments = $commentsManager->getComments($_GET['id']);
+
+    require('view/backend/updatePostView.php');
+}
+
+function updatePost()
+{
+    $postManager = new PostManager();
+    $updatePost = $postManager->modifyPost($_GET['id']);
 }

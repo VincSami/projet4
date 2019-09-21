@@ -28,14 +28,38 @@ try {
 	                throw new Exception('Erreur : tous les champs ne sont pas remplis !');
 	            }
 	    }
-	    elseif ($_GET['action'] == 'delete') {
+	    elseif ($_GET['action'] == 'gotodeletepage') {
+	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+	        	deletePostAdmin();
+	        }  
+		    else {
+		        throw new Exception("Erreur : aucun identifiant de billet envoyé");
+		    }
+		}
+		elseif ($_GET['action'] == 'delete') {
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {
 	        	erasePost();
 	        }  
 		    else {
 		        throw new Exception("Erreur : aucun identifiant de billet envoyé");
 		    }
-		}	
+		}
+		elseif ($_GET['action'] == 'gotoupdatepage') {
+	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+	        	updatePostAdmin();
+	        }  
+		    else {
+		        throw new Exception("Erreur : aucun identifiant de billet envoyé");
+		    }
+		}
+		elseif ($_GET['action'] == 'delete') {
+	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+	        	updatePost();
+	        }  
+		    else {
+		        throw new Exception("Erreur : aucun identifiant de billet envoyé");
+		    }
+		}
 	}
 	else{
 		listPosts();

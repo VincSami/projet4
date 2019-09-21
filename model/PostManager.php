@@ -26,31 +26,29 @@ class PostManager extends Manager
 		}
 	}
 
-	public function deletepost($postId)
+	public function deletePost($postId)
 	{
 		if (($postId >= 1) && ($postId <= 6)) {
 	        $db = $this->dbConnect();  
-	        $req = $db->prepare('DELETE id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
+	        $req = $db->prepare('DELETE id, title, content, creation_date FROM posts WHERE id = ?');
 	        $req->execute(array($postId));
-	        $post = $req->fetch();
+	        $deletePost = $req->fetch(); 
 
-	        return $post;
-
+	        return $deletePost;
 	    } else {
 	    	throw new Exception('le billet n\'existe pas !');
 		}
 	}
 
-	public function updatepost($postId)
+	public function modifyPost($postId)
 	{
 		if (($postId >= 1) && ($postId <= 6)) {
 	        $db = $this->dbConnect();  
-	        $req = $db->prepare('UPDATE id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
+	        $req = $db->prepare('UPDATE id, title, content, FROM posts WHERE id = ?');
 	        $req->execute(array($postId));
-	        $post = $req->fetch();
+	        $modifyPost = $req->fetch(); 
 
-	        return $post;
-
+	        return $modifyPost;
 	    } else {
 	    	throw new Exception('le billet n\'existe pas !');
 		}
