@@ -53,4 +53,16 @@ class PostManager extends Manager
 	    	throw new Exception('le billet n\'existe pas !');
 		}
 	}
+	
+	public function createPost()
+	{
+	        $db = $this->dbConnect();  
+	        $req = $db->prepare('INSERT INTO posts(title, content, creation_date) VALUES (:title, :content, :creation_date)');
+	        $req->execute(array(
+	        'title' => $title,
+			'content' => $content,
+			'creation_date' => $creation_date,
+	        ));
+	echo "Le nouvel épisode a bien été ajouté";
+	}
 }

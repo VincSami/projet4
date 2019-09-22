@@ -8,7 +8,7 @@
 
 <?php ob_start(); ?>
       <div id="newPost">
-        <p>Ecrire un nouvel épisode</p>
+        <button><a href="index.php?action=newPost">Ecrire un nouvel épisode</a></button><br>
       </div>
       <?php
         while ($post = $posts->fetch())
@@ -18,8 +18,8 @@
             <img src="public/img/episode<?= $post['id'] ?>.jpg">
             <figcaption>Billet simple pour l'Alaska<br><?= htmlspecialchars($post['title']) ?></figcaption>
             </a></figure>
-            <button><a href="index.php?action=gotodeletepage&amp;id=<?= $post['id'] ?>">Supprimer</a></button>
-            <button><a href="index.php?action=gotoupdatepage&amp;id=<?= $post['id'] ?>">Modifier</a></button>
+            <button><a href="index.php?action=goToDeletePage&amp;id=<?= $post['id'] ?>">Supprimer</a></button>
+            <button><a href="index.php?action=goToUpdatePage&amp;id=<?= $post['id'] ?>">Modifier</a></button>
       <?php
         }
       $posts->closeCursor();
@@ -28,4 +28,4 @@
 
 <?php $comment_content = "" ?>
 
-<?php require('template.php'); ?>
+<?php require('templateBackend.php'); ?>

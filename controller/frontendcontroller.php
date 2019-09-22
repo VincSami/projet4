@@ -25,16 +25,20 @@ function post()
 function addComment($postId, $author, $email, $comment)
 {
     $commentsManager = new CommentsManager();
-
     $affectedLines = $commentsManager->postComment($postId, $author, $email, $comment);
-
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     } 
-
     else {
         header('Location: index.php?action=post&id=' . $postId);
     }
+}
+
+function signalComment($commentId, $postId)
+{
+    $commentsManager = new CommentsManager();
+    $signalComment = $commentsManager->badComment($_GET['commentId'], $_GET['postId']);
+    header('Location: index.php?action=post&id=' . $_GET['postId']);
 }
 
 function connectAdministrator()

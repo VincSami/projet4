@@ -20,4 +20,13 @@ class CommentsManager extends Manager
 	    $affectedLines = $comments->execute(array($postId, $author, $email, $comment));
 	    return $affectedLines;
 	}
+
+	public function badComment($commentId, $postId)
+	{
+	    $db = $this->dbConnect();
+	    $comments = $db->prepare('UPDATE comments SET niveau_signalement = niveau_signalement + 1, date_dernier_signalement = NOW() WHERE id = ? AND post_id = ?');
+	    $badComment = $comments->execute(array($commentId, $postId));
+	    
+	    return $badComment;
+	}
 }

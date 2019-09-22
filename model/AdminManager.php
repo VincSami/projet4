@@ -18,12 +18,13 @@ class AdminManager extends Manager
 		{
    			echo 'Mauvais identifiant ou mot de passe !';
 		}
-		else {
-    		if ($isPasswordCorrect) {
-        		echo 'Bonjour ' . $pseudo . '!';
-    		} else {
-        	echo 'Mauvais identifiant ou mot de passe !';
-    		}
+    	if ($isPasswordCorrect) {
+	        session_start();
+	        $_SESSION['id'] = $resultat['id'];
+	        $_SESSION['pseudo'] = $pseudo;
+    	}
+    	else {
+        echo 'Mauvais identifiant ou mot de passe !';
     	}	
 	}
 }

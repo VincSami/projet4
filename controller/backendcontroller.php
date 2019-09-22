@@ -18,7 +18,7 @@ function deletePostAdmin()
 
     $postAdmin = $postManager->getPost($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
-
+    session_start();
     require('view/backend/deletePostView.php');
 }
 
@@ -35,7 +35,7 @@ function updatePostAdmin()
 
     $postAdmin = $postManager->getPost($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
-
+    session_start();
     require('view/backend/updatePostView.php');
 }
 
@@ -43,4 +43,10 @@ function updatePost()
 {
     $postManager = new PostManager();
     $updatePost = $postManager->modifyPost($_GET['id']);
+}
+
+function newPost()
+{
+	$postManager = new PostManager();
+	$newPost = $postManager->createPost();
 }

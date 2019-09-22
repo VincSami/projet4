@@ -16,4 +16,4 @@
 
 <?php $comment_content = ""; ?>
 
-<?php require('template.php'); ?>
+<?php require('templateBackend.php'); ?>
