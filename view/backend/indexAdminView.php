@@ -14,7 +14,7 @@
         while ($post = $posts->fetch())
         {
       ?>
-            <figure><a href="index.php?action=post&amp;id=<?= $post['id'] ?>">
+            <figure><a href="index.php?action=postAdmin&amp;id=<?= $post['id'] ?>">
             <img src="public/img/episode<?= $post['id'] ?>.jpg">
             <figcaption>Billet simple pour l'Alaska<br><?= htmlspecialchars($post['title']) ?></figcaption>
             </a></figure>

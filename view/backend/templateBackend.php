@@ -46,8 +46,8 @@
         </header>
 
         <section id="introduction">
-        	<h1><?= $main_content_title ?></h1>
-        	<p><?= $main_content_subtitle ?></p>
+          <h1><?= $main_content_title ?></h1>
+          <p><?= $main_content_subtitle ?></p>
         </section> 
 
         <section id="main_content">
@@ -79,10 +79,10 @@
         <footer>
             <h1>Jean Forteroche</h1>
             <div id="footer-content">
-	            <p>Plan du site</p>
-	            <p>Suivez-moi sur les réseaux sociaux</p>
-	            <p><a href="#">Mentions légales</a></p>
-        	</div>
+              <p>Plan du site</p>
+              <p>Suivez-moi sur les réseaux sociaux</p>
+              <p><a href="#">Mentions légales</a></p>
+          </div>
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

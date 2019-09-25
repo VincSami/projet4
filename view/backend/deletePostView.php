@@ -1,6 +1,6 @@
 <?php $page_title = "Billet simple pour l'Alaska" ?>
 
-<?php $page_subtitle = "Supprimer le billet : " . htmlspecialchars($postAdmin['title']) ?>
+<?php $page_subtitle = "Supprimer le billet : " . htmlspecialchars($post['title']) ?>
 
 <?php $main_content_title = "Vous êtes sur le point de supprimer définitivement ce billet ainsi que ses commentaires"; ?>
 
@@ -8,7 +8,7 @@
         <button><a href="index.php?action=delete&amp;id=<?= $postAdmin['id'] ?>">Supprimer le billet</a></button>
 <?php $main_content_subtitle = ob_get_clean(); ?>
 
-<?php $article_content = htmlspecialchars($postAdmin['content'])?>
+<?php $article_content = htmlspecialchars($post['content'])?>
 
 <?php ob_start(); ?>
         <h2>Commentaires</h2>
