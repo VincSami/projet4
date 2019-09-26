@@ -55,7 +55,7 @@ try {
 		}
 		elseif ($_GET['action'] == 'delete') {
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {
-	        	erasePost($postId);
+	        	erasePost($_GET['id']);
 	        }  
 		    else {
 		        throw new Exception("aucun identifiant de billet envoyé");
@@ -70,8 +70,8 @@ try {
 		    }
 		}
 		elseif ($_GET['action'] == 'update') {
-	        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
-	        	updatePost($_GET['postId']);
+	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+	        	updatePost($_POST['id']);
 	        }  
 		    else {
 		        throw new Exception("aucun identifiant de billet envoyé");

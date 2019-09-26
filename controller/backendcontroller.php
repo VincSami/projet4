@@ -22,9 +22,10 @@ function postAdmin()
 {
     checkIsAdmin();
     $adminManager = new AdminManager();
+    $commentsManager = new CommentsManager();
     
     $postAdmin = $adminManager->getPostAdmin($_GET['id']);
-
+    $comments = $commentsManager->getComments($_GET['id']);
     require('view/backend/postAdminView.php');
 }
 
@@ -41,8 +42,10 @@ function deletePostAdmin()
 
 function erasePost($postId)
 {
-    $postManager = new PostManager();
-    $deletePost = $postManager->deletePost($postId);
+    $adminManager = new AdminManager();
+    $deletePost = $adminManager->deletePost($postId);
+    $deleteComments = $adminManager->deleteComments($postId);
+    header("Location:index.php");
 }
 
 function updatePostAdmin()

@@ -1,5 +1,5 @@
 tinymce.init({
-  selector: '#editor',
+  selector: ['#editor', '#postTitle', 'postContent'],
   height: 500,
   menubar: false,
   plugins: [

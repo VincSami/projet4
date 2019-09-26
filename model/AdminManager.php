@@ -58,6 +58,19 @@ class AdminManager extends Manager
 		}
 	}
 
+  	public function deleteComments($postId)
+	{
+		if (($postId >= 1) && ($postId <= 6)) {
+	        $db = $this->dbConnect();  
+	        $req = $db->prepare('DELETE FROM comments WHERE post_id = ?');
+	        $req->execute(array($postId));
+	        $deleteComments = $req->fetch(); 
+	    } 
+	    else {
+	    	throw new Exception('le billet n\'existe pas !');
+		}
+	}
+
 	public function modifyPost($postId)
 	{
 		if(isset($_POST['submit'])){
