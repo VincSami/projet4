@@ -17,7 +17,7 @@
                 <input type="email" id="email" name="email" placeholder="Votre email" /><br><br>
                 <label for="comment">Commentaire</label><br />
                 <textarea id="comment" name="comment" placeholder="Votre commentaire"></textarea><br>
-                <input type="submit" value="Valider"/>
+                <input class="boutonVert" type="submit" value="Valider"/>
         </form>
 
         <?php
@@ -28,7 +28,7 @@
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong></p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
             <p></strong> le <?= $comment['comment_date_fr'] ?></strong></p>
-            <button><a href="index.php?action=signal&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">signaler</a></button>
+            <button class="boutonRouge"><a href="index.php?action=signal&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">signaler</a></button>
         </div>
         <?php
         }

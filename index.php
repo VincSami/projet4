@@ -1,5 +1,4 @@
 <?php
-//error_reporting(E_ALL); ini_set('display_errors', 'On');
 
 session_start();
 
@@ -20,7 +19,6 @@ try {
 	    elseif ($_GET['action'] == 'connect') {
 	    	if ((!empty($_POST['pseudo'])) && (!empty($_POST['password']))) {
 	    		connectAdministrator($_POST['pseudo'], $_POST['password']);
-	    		header("Location:index.php?action=listPostAdmin");
 	    	} else {
 	                throw new Exception('tous les champs ne sont pas remplis !');
 	            }
@@ -36,6 +34,13 @@ try {
 	            }
 	        } else {
 	                throw new Exception('tous les champs ne sont pas remplis !');
+	            }
+	    }
+	    elseif ($_GET['action'] == 'deleteComment') {
+	        if (isset($_GET['commentId']) && ($_GET['commentId'] > 0)) {
+	              eraseComment($_GET['commentId'], $_GET['id'] );
+	            } else {
+	                throw new Exception('Le commentaire n\'existe pas !');
 	            }
 	    }
 	    elseif ($_GET['action'] == 'signal') {
@@ -71,7 +76,11 @@ try {
 		}
 		elseif ($_GET['action'] == 'update') {
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {
-	        	updatePost($_POST['id']);
+	        	if (!empty($_POST['title']) && !empty($_POST['content'])) {
+	        	updatePost($_POST['title'], $_POST['content'], $_GET['id']);
+	        	} else {
+	        		throw new Exception('tous les champs ne sont pas remplis !');
+	        	}
 	        }  
 		    else {
 		        throw new Exception("aucun identifiant de billet envoyé");
@@ -81,7 +90,14 @@ try {
 	        require('view/backend/createPostView.php');
 	    }
 	    elseif ($_GET['action'] == 'createPost') {
-	        newPost();
+	        if (!empty($_POST['title']) && (!empty($_POST['content']))){
+	        newPost($_POST['title'], $_POST['content']);
+	    	} else {
+	    		throw new Exception('tous les champs ne sont pas remplis !');
+	    	}
+	    }
+	    elseif ($_GET['action'] == 'adminComments') {
+	        require('view/backend/adminCommentsView.php.php');
 	    }  
 	}
 	else{

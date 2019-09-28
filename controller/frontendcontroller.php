@@ -45,4 +45,5 @@ function connectAdministrator()
 {
     $adminManager = new AdminManager();
     $connectAdministrator = $adminManager->connectAdmin($_POST['pseudo'], $_POST['password']);
+    header("Location:index.php?action=listPostAdmin");
 }

@@ -24,7 +24,7 @@ function postAdmin()
     $adminManager = new AdminManager();
     $commentsManager = new CommentsManager();
     
-    $postAdmin = $adminManager->getPostAdmin($_GET['id']);
+    $post = $adminManager->getPostAdmin($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
     require('view/backend/postAdminView.php');
 }
@@ -38,6 +38,12 @@ function deletePostAdmin()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
     require('view/backend/deletePostView.php');
+}
+
+function eraseComment($commentId, $postId){
+    $adminManager = new AdminManager();
+    $eraseComment = $adminManager->deleteComment($commentId, $postId);
+    header('Location: index.php?action=postAdmin&id=' . $postId);
 }
 
 function erasePost($postId)
@@ -59,14 +65,26 @@ function updatePostAdmin()
     require('view/backend/updatePostView.php');
 }
 
-function updatePost($postId)
+function updatePost($title, $content, $postId)
 {
     $adminManager = new AdminManager();
-    $updatedPost = $adminManager->modifyPost($postId);
+    $updatedPost = $adminManager->modifyPost($title, $content, $postId);
+    if ($updatedPost === false) {
+        throw new Exception('Impossible de modifier le billet !');
+    } 
+    else {
+        header('Location: index.php');
+    }
 }
 
-function newPost()
+function newPost($title, $content)
 {
-    $postManager = new PostManager();
-    $newPost = $postManager->createPost();
+    $adminManager = new AdminManager();
+    $postCreated = $adminManager->createPost($title, $content);
+    if ($createPost === false) {
+        throw new Exception('Impossible d\'ajouter le billet !');
+    } 
+    else {
+        header('Location: index.php');
+    }
 }

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,8 +34,10 @@
                         </div>
                       </li>
                     </ul>
-                <p><?php echo 'Bonjour ' . $_SESSION['pseudo']; ?>
-                <button id="exitAdmin"><a href ="index.php?action=disconnect">Se déconnecter</a></button>
+                <div id="infoSession">
+                <p id="helloAdmin"><?php echo 'Bonjour ' . $_SESSION['pseudo'] . ' !'; ?></p>
+                <button class="boutonRouge" id="exitAdmin"><a href ="index.php?action=disconnect">Se déconnecter</a></button>
+                </div>
                 </div>
             </nav>
             <img class="fullwidth" src="public/img/alaska_accueil.jpg">

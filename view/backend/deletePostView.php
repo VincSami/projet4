@@ -1,11 +1,12 @@
-<?php $page_title = "Billet simple pour l'Alaska" ?>
+<?php $page_title = "Page d'administration du site de Jean Forteroche" ?>
 
 <?php $page_subtitle = "Supprimer le billet : " . htmlspecialchars($post['title']) ?>
 
 <?php $main_content_title = "Vous êtes sur le point de supprimer définitivement ce billet ainsi que ses commentaires"; ?>
 
 <?php ob_start(); ?>
-        <button><a href="index.php?action=delete&amp;id=<?= $post['id'] ?>">Supprimer le billet</a></button>
+        <button class="boutonVert"><a href="index.php?action=delete&amp;id=<?= $post['id'] ?>">Supprimer le billet</a></button>
+        <button class="boutonRouge"><a href="index.php">Annuler</a></button>
 <?php $main_content_subtitle = ob_get_clean(); ?>
 
 <?php $article_content = ($post['content'])?>
@@ -19,8 +20,7 @@ while ($comment = $comments->fetch())
         <p><strong><?= htmlspecialchars($comment['author']) ?></strong></p>
         <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
         <p></strong> le <?= $comment['comment_date_fr'] ?></strong></p>
-        <button><a href="index.php?action=signal&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">signaler</a></button>
-        </div>
+    </div>
     <?php
     }
     ?>

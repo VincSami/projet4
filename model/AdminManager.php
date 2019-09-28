@@ -22,7 +22,6 @@ class AdminManager extends Manager
    			throw new Exception('Mauvais identifiant ou mot de passe !');
 		}
     	if ($isPasswordCorrect) {
-	        //session_start();
 	        $_SESSION['id'] = $resultat['id'];
 	        $_SESSION['pseudo'] = $pseudo;
     	}
@@ -33,63 +32,67 @@ class AdminManager extends Manager
 	
   	public function getPostAdmin($postId)
     {	
-    	if (($postId >= 1) && ($postId <= 6)) {
 	        $db = $this->dbConnect();  
 	        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
 	        $req->execute(array($postId));
-	        $postAdmin = $req->fetch();
-	        return $postAdmin;
-
-	    } else {
-	    	throw new Exception('le billet n\'existe pas !');
-		}
+	        $post = $req->fetch();
+	        return $post;
 	}
   	
   	public function deletePost($postId)
 	{
-		if (($postId >= 1) && ($postId <= 6)) {
 	        $db = $this->dbConnect();  
 	        $req = $db->prepare('DELETE FROM posts WHERE id = ?');
 	        $req->execute(array($postId));
 	        $deletePost = $req->fetch(); 
-	    } 
-	    else {
-	    	throw new Exception('le billet n\'existe pas !');
-		}
 	}
 
   	public function deleteComments($postId)
 	{
-		if (($postId >= 1) && ($postId <= 6)) {
 	        $db = $this->dbConnect();  
 	        $req = $db->prepare('DELETE FROM comments WHERE post_id = ?');
 	        $req->execute(array($postId));
 	        $deleteComments = $req->fetch(); 
-	    } 
-	    else {
-	    	throw new Exception('le billet n\'existe pas !');
-		}
 	}
 
-	public function modifyPost($postId)
+	public function deleteComment($commentId, $postId)
+	{
+	        $db = $this->dbConnect();  
+	        $req = $db->prepare('DELETE FROM comments WHERE id = ? AND post_id = ?');
+	        $req->execute(array($commentId, $postId));
+	        $deleteComment = $req->fetch(); 
+	}
+
+	public function modifyPost($title, $content, $postId)
 	{
 		if(isset($_POST['submit'])){
-			if (($postId >= 1) && ($postId <= 6)) {
-		        $postContent = $_POST['editor'];
 		        $db = $this->dbConnect();  
-		        $req = $db->prepare('UPDATE posts SET content = $postContent, updated_date = NOW() WHERE id = ?');
-		        $update = $req->execute(array($postId));
-		    } else {
-		    	throw new Exception('le billet n\'existe pas !');
-		    }
+		        $posts = $db->prepare('UPDATE posts SET title = ?, content = ?, updated_date = NOW() WHERE id = ?');
+		        $updatedPost = $posts->execute(array($title, $content, $postId));
+		        return $updatedPost;
 		}
 	}
 	
 	public function createPost($title, $content)
 	{
-	        $db = $this->dbConnect();  
-	        $req = $db->prepare('INSERT INTO posts(title, content, creation_date) VALUES (?, ?, NOW()');
-	        $req->execute(array($title, $content));
-	echo "Le nouvel épisode a bien été ajouté";
+	    $db = $this->dbConnect();
+	    $posts = $db->prepare('INSERT INTO posts(title, creation_date, content) VALUES(?, NOW(), ?)');
+	    $postCreated = $posts->execute(array($title, $content));
+	    return $postCreated;
 	}
+
+	/*public function postImage()
+	{
+	    if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0){
+	    	if ($_FILES['monfichier']['size'] <= 5000000){
+	    		$infosfichier = pathinfo($_FILES['monfichier']['name']);
+                $extension_upload = $infosfichier['extension'];
+                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+                if (in_array($extension_upload, $extensions_autorisees)){
+                	move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/episode' . ($postId + 2));
+                    echo "L'envoi a bien été effectué !";
+                }
+	    	}
+		}
+	}*/
 }
