@@ -81,18 +81,18 @@ class AdminManager extends Manager
 	    return $postCreated;
 	}
 
-	/*public function postImage()
+	public function postImage()
 	{
 	    if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0){
-	    	if ($_FILES['monfichier']['size'] <= 5000000){
-	    		$infosfichier = pathinfo($_FILES['monfichier']['name']);
+	    	if ($_FILES['image']['size'] <= 5000000){
+	    		$infosfichier = pathinfo($_FILES['image']['name']);
                 $extension_upload = $infosfichier['extension'];
                 $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($extension_upload, $extensions_autorisees)){
-                	move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/episode' . ($postId + 2));
+                	move_uploaded_file($_FILES['image']['tmp_name'], 'C:\wamp64\www\projet4\public\img\episode' . ($postId.length + 2));
                     echo "L'envoi a bien été effectué !";
                 }
 	    	}
 		}
-	}*/
+	}
 }

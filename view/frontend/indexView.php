@@ -1,3 +1,7 @@
+<?php ob_start(); ?>
+  <img class="fullwidth" src="public/img/alaska_accueil.jpg">
+<?php $image_post = ob_get_clean(); ?>
+
 <?php $page_title = 'Bienvenue sur le site de Jean Forteroche'; ?>
 
 <?php $page_subtitle = 'L\'écrivain du Grand Nord, auteur des best-sellers "Une nuit à Montréal" et "Terres sauvages d\'Islande"'; ?>

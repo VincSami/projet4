@@ -1,3 +1,7 @@
+<?php ob_start(); ?>
+    <img class="fullwidth" src="public/img/episode<?= $post['id'] ?>.jpg">
+<?php $image_post = ob_get_clean(); ?>
+
 <?php $page_title = "Billet simple pour l'Alaska" ?>
 
 <?php $page_subtitle = htmlspecialchars($post['title']) ?>
@@ -16,7 +20,7 @@
                 <label for="email">Email</label><br />
                 <input type="email" id="email" name="email" placeholder="Votre email" /><br><br>
                 <label for="comment">Commentaire</label><br />
-                <textarea id="comment" name="comment" placeholder="Votre commentaire"></textarea><br>
+                <textarea id="commentPost" name="comment" placeholder="Votre commentaire"></textarea><br>
                 <input class="boutonVert" type="submit" value="Valider"/>
         </form>
 

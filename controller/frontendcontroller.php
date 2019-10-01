@@ -40,10 +40,3 @@ function signalComment($commentId, $postId)
     $signalComment = $commentsManager->badComment($_GET['commentId'], $_GET['postId']);
     header('Location: index.php?action=post&id=' . $_GET['postId']);
 }
-
-function connectAdministrator()
-{
-    $adminManager = new AdminManager();
-    $connectAdministrator = $adminManager->connectAdmin($_POST['pseudo'], $_POST['password']);
-    header("Location:index.php?action=listPostAdmin");
-}

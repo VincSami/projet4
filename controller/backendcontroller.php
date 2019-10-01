@@ -11,6 +11,14 @@ function checkIsAdmin()
     }
 }
 
+function connectAdministrator()
+{
+    $adminManager = new AdminManager();
+    $connectAdministrator = $adminManager->connectAdmin($_POST['pseudo'], $_POST['password']);
+    header("Location:index.php?action=listPostAdmin");
+}
+
+//Accueil Administrateur
 function listPostsAdmin()
 {
     $postManager = new PostManager();
@@ -18,6 +26,7 @@ function listPostsAdmin()
     require('view/backend/indexAdminView.php');
 }
 
+//Lecture billet Administrateur
 function postAdmin()
 {
     checkIsAdmin();
@@ -29,6 +38,7 @@ function postAdmin()
     require('view/backend/postAdminView.php');
 }
 
+//Page de suppression du billet et des commentaires
 function deletePostAdmin()
 {
     checkIsAdmin();
@@ -40,12 +50,7 @@ function deletePostAdmin()
     require('view/backend/deletePostView.php');
 }
 
-function eraseComment($commentId, $postId){
-    $adminManager = new AdminManager();
-    $eraseComment = $adminManager->deleteComment($commentId, $postId);
-    header('Location: index.php?action=postAdmin&id=' . $postId);
-}
-
+//Suppression du billet et des commentaires
 function erasePost($postId)
 {
     $adminManager = new AdminManager();
@@ -54,6 +59,14 @@ function erasePost($postId)
     header("Location:index.php");
 }
 
+//Suppression d'un commentaire
+function eraseComment($commentId, $postId){
+    $adminManager = new AdminManager();
+    $eraseComment = $adminManager->deleteComment($commentId, $postId);
+    header('Location: index.php?action=postAdmin&id=' . $postId);
+}
+
+//Page de modification du billet
 function updatePostAdmin()
 {
     checkIsAdmin();
@@ -65,6 +78,7 @@ function updatePostAdmin()
     require('view/backend/updatePostView.php');
 }
 
+//Modification du billet
 function updatePost($title, $content, $postId)
 {
     $adminManager = new AdminManager();
@@ -77,6 +91,7 @@ function updatePost($title, $content, $postId)
     }
 }
 
+//Création d'un nouveau billet
 function newPost($title, $content)
 {
     $adminManager = new AdminManager();

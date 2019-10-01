@@ -1,3 +1,7 @@
+<?php ob_start(); ?>
+    <img class="fullwidth" src="public/img/episode<?= $post['id'] ?>.jpg">
+<?php $image_post = ob_get_clean(); ?>
+
 <?php $page_title = "Page d'administration du site de Jean Forteroche" ?>
 
 <?php $page_subtitle = "Modifier le billet : " . htmlspecialchars($post['title']) ?>
@@ -8,15 +12,15 @@
 
 <?php ob_start(); ?>
     <form action="index.php?action=update&amp;id=<?= $post['id'] ?>" method="post">
-	    <label for="title">Titre</label><br />
+	    <label for="title"><strong>Titre</strong></label><br />
 	    <textarea id="title" name="title">
 	    	<?php echo ($post['title']); ?>
-	    </textarea>
-	    <label for="content">Contenu</label><br />
+	    </textarea><br />
+	    <label for="content"><strong>Contenu</strong></label><br />
 	    <textarea id="content" name="content">
 	        <?php echo ($post['content']);?>
-	    </textarea>
-	    <input class="boutonVert" type="submit" name="submit" value="Valider le contenu du billet">
+	    </textarea><br />
+	    <input class="boutonVert" type="submit" name="submit" value="Modifier le billet">
         <button class="boutonRouge"><a href="index.php">Annuler</a></button>
 	</form>
 <?php $article_content = ob_get_clean(); ?>

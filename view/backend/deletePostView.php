@@ -1,3 +1,7 @@
+<?php ob_start(); ?>
+    <img class="fullwidth" src="public/img/episode<?= $post['id'] ?>.jpg">
+<?php $image_post = ob_get_clean(); ?>
+
 <?php $page_title = "Page d'administration du site de Jean Forteroche" ?>
 
 <?php $page_subtitle = "Supprimer le billet : " . htmlspecialchars($post['title']) ?>

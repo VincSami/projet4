@@ -1,3 +1,7 @@
+<?php ob_start(); ?>
+    <img class="fullwidth" src="public/img/alaska_accueil.jpg ?>.jpg">
+<?php $image_post = ob_get_clean(); ?>
+
 <?php $page_title = 'Bienvenue sur la page d\'administration du site de Jean Forteroche'; ?>
 
 <?php $page_subtitle = ''; ?>
