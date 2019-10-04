@@ -4,13 +4,13 @@
 
 <?php $page_title = "Billet simple pour l'Alaska" ?>
 
-<?php $page_subtitle = htmlspecialchars($post['title']) ?>
+<?php $page_subtitle = ($post['title']) ?>
 
 <?php $main_content_title = "\"Il y a avait peu de place pour l'hésitation. Perdre ou gagner, franchement, on a vraiment le choix ?\""; ?>
 
 <?php $main_content_subtitle = ""; ?>
 
-<?php $article_content = htmlspecialchars($post['content']) ?>
+<?php $article_content = ($post['content']) ?>
 
 <?php ob_start(); ?>
         <h2>Commentaires</h2>
@@ -32,7 +32,7 @@
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong></p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
             <p></strong> le <?= $comment['comment_date_fr'] ?></strong></p>
-            <button class="boutonRouge"><a href="index.php?action=signal&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">signaler</a></button>
+            <button class="boutonRouge" id="signalButton"><a href="index.php?action=signal&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">signaler</a></button>
         </div>
         <?php
         }

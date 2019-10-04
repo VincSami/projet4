@@ -21,3 +21,5 @@ form.addEventListener("submit", function() {
 	adminAccess.style.display = "none";
 	cancelAdminAccess.style.display = "none";
 });
+
+const signalButton = document.getElementById("adminButton");

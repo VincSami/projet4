@@ -18,7 +18,7 @@
       ?>
             <figure><a href="index.php?action=post&amp;id=<?= $post['id'] ?>">
             <img src="public/img/episode<?= $post['id'] ?>.jpg">
-            <figcaption>Billet simple pour l'Alaska<br><?= htmlspecialchars($post['title']) ?></figcaption>
+            <figcaption>Billet simple pour l'Alaska<br><?= ($post['title']) ?></figcaption>
             </a></figure>
       <?php
         }

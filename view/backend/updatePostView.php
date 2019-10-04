@@ -4,15 +4,17 @@
 
 <?php $page_title = "Page d'administration du site de Jean Forteroche" ?>
 
-<?php $page_subtitle = "Modifier le billet : " . htmlspecialchars($post['title']) ?>
+<?php $page_subtitle = "Modifier le billet : " . $post['title'] ?>
 
 <?php $main_content_title = "Vous êtes sur le point de modifier ce billet "; ?>
 
 <?php $main_content_subtitle = ""; ?>
 
 <?php ob_start(); ?>
-    <form action="index.php?action=update&amp;id=<?= $post['id'] ?>" method="post">
-	    <label for="title"><strong>Titre</strong></label><br />
+    <form action="index.php?action=update&amp;id=<?= $post['id'] ?>" method="post" enctype="multipart/form-data">
+	    <label for="image"><strong>Définir l'image</strong></label><br />
+        <input class="boutonVert" type="file" name="image" /><br /><br />
+        <label for="title"><strong>Titre</strong></label><br />
 	    <textarea id="title" name="title">
 	    	<?php echo ($post['title']); ?>
 	    </textarea><br />

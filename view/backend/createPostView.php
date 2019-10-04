@@ -9,7 +9,7 @@
 <?php $main_content_subtitle = ""; ?>
 
 <?php ob_start(); ?>
-    <form action="index.php?action=createPost" method="post">
+    <form action="index.php?action=createPost" method="post" enctype="multipart/form-data">
 	    <label for="image"><strong>Définir l'image</strong></label><br />
    		<input class="boutonVert" type="file" name="image" /><br /><br />
 	    <label for="title"><strong>Titre</strong></label><br />

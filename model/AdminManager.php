@@ -78,19 +78,19 @@ class AdminManager extends Manager
 	    $db = $this->dbConnect();
 	    $posts = $db->prepare('INSERT INTO posts(title, creation_date, content) VALUES(?, NOW(), ?)');
 	    $postCreated = $posts->execute(array($title, $content));
-	    return $postCreated;
+	    
+	    return $db->lastInsertId();
 	}
 
-	public function postImage()
+	public function postImage($postId)
 	{
-	    if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0){
+	    if (isset($_FILES['image'])){
 	    	if ($_FILES['image']['size'] <= 5000000){
 	    		$infosfichier = pathinfo($_FILES['image']['name']);
                 $extension_upload = $infosfichier['extension'];
                 $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($extension_upload, $extensions_autorisees)){
-                	move_uploaded_file($_FILES['image']['tmp_name'], 'C:\wamp64\www\projet4\public\img\episode' . ($postId.length + 2));
-                    echo "L'envoi a bien été effectué !";
+                	move_uploaded_file($_FILES['image']['tmp_name'], 'C:\wamp64\www\projet4\public\img\episode' . $postId . "." . $extension_upload);
                 }
 	    	}
 		}

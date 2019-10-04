@@ -22,7 +22,7 @@
             <figure><a href="index.php?action=postAdmin&amp;id=<?= $post['id'] ?>">
             <img src="public/img/episode<?= $post['id'] ?>.jpg">
             <figcaption>
-              Billet simple pour l'Alaska<br><?= htmlspecialchars($post['title']) ?><br></a>
+              Billet simple pour l'Alaska<br><?= $post['title'] ?><br></a>
               <button class="boutonRouge" id="deletePostPage"><a href="index.php?action=goToDeletePage&amp;id=<?= $post['id'] ?>">Supprimer</a></button>
               <button class="boutonOrange" id="updatePostPage"><a href="index.php?action=goToUpdatePage&amp;id=<?= $post['id'] ?>">Modifier</a></button>
             </figcaption>

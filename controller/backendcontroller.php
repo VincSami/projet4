@@ -4,18 +4,77 @@ require_once('model/PostManager.php');
 require_once('model/CommentsManager.php');
 require_once('model/AdminManager.php');
 
-function checkIsAdmin()
-{
-    if(!isset($_SESSION['id'])){
-        header("Location:index.php");
-    }
-}
 
-function connectAdministrator()
+function backendController()
 {
-    $adminManager = new AdminManager();
-    $connectAdministrator = $adminManager->connectAdmin($_POST['pseudo'], $_POST['password']);
-    header("Location:index.php?action=listPostAdmin");
+  if (isset($_GET['action'])) {                 
+          if ($_GET['action'] == 'listPostsAdmin') {
+              listPostsAdmin();
+          }
+          elseif ($_GET['action'] == 'postAdmin') {
+              postAdmin();
+          }
+          elseif ($_GET['action'] == 'deleteComment') {
+              if (isset($_GET['commentId']) && ($_GET['commentId'] > 0)) {
+                    eraseComment($_GET['commentId'], $_GET['id'] );
+                  } else {
+                      throw new Exception('Le commentaire n\'existe pas !');
+                  }
+          }
+          elseif ($_GET['action'] == 'goToDeletePage') {
+              if (isset($_GET['id']) && $_GET['id'] > 0) {
+                  deletePostAdmin();
+              }  
+              else {
+                  throw new Exception("aucun identifiant de billet envoyé");
+              }
+          }
+          elseif ($_GET['action'] == 'delete') {
+              if (isset($_GET['id']) && $_GET['id'] > 0) {
+                  erasePost($_GET['id']);
+              }  
+              else {
+                  throw new Exception("aucun identifiant de billet envoyé");
+              }
+          }
+          elseif ($_GET['action'] == 'goToUpdatePage') {
+              if (isset($_GET['id']) && $_GET['id'] > 0) {
+                  updatePostAdmin();
+              }  
+              else {
+                  throw new Exception("aucun identifiant de billet envoyé");
+              }
+          }
+          elseif ($_GET['action'] == 'update') {
+              if (isset($_GET['id']) && $_GET['id'] > 0) {
+                  if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                  updatePost($_POST['title'], $_POST['content'], $_GET['id']);
+                  } else {
+                      throw new Exception('tous les champs ne sont pas remplis !');
+                  }
+              }  
+              else {
+                  throw new Exception("aucun identifiant de billet envoyé");
+              }
+          }
+          elseif ($_GET['action'] == 'newPost') {
+              require('view/backend/createPostView.php');
+          }
+          elseif ($_GET['action'] == 'createPost') {
+              if (!empty($_POST['title']) && (!empty($_POST['content']))){
+              newPost($_POST['title'], $_POST['content']);
+              } else {
+                  throw new Exception('tous les champs ne sont pas remplis !');
+              }
+          }
+          elseif ($_GET['action'] == 'disconnect') {
+              session_destroy();
+              header('Location:index.php');
+          }
+  }
+  else{
+      listPostsAdmin();
+  }
 }
 
 //Accueil Administrateur
@@ -29,7 +88,6 @@ function listPostsAdmin()
 //Lecture billet Administrateur
 function postAdmin()
 {
-    checkIsAdmin();
     $adminManager = new AdminManager();
     $commentsManager = new CommentsManager();
     
@@ -41,7 +99,6 @@ function postAdmin()
 //Page de suppression du billet et des commentaires
 function deletePostAdmin()
 {
-    checkIsAdmin();
     $postManager = new PostManager();
     $commentsManager = new CommentsManager();
 
@@ -69,7 +126,6 @@ function eraseComment($commentId, $postId){
 //Page de modification du billet
 function updatePostAdmin()
 {
-    checkIsAdmin();
     $postManager = new PostManager();
     $commentsManager = new CommentsManager();
 
@@ -83,6 +139,7 @@ function updatePost($title, $content, $postId)
 {
     $adminManager = new AdminManager();
     $updatedPost = $adminManager->modifyPost($title, $content, $postId);
+    $postImage = $adminManager->postImage($postId);
     if ($updatedPost === false) {
         throw new Exception('Impossible de modifier le billet !');
     } 
@@ -96,6 +153,7 @@ function newPost($title, $content)
 {
     $adminManager = new AdminManager();
     $postCreated = $adminManager->createPost($title, $content);
+    $postImage = $adminManager->postImage($postCreated);
     if ($createPost === false) {
         throw new Exception('Impossible d\'ajouter le billet !');
     } 
