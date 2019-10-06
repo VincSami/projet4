@@ -71,6 +71,9 @@ function backendController()
               session_destroy();
               header('Location:index.php');
           }
+          elseif ($_GET['action'] == 'mentions'){
+            require ('view/mentions_legales.php');
+          }
   }
   else{
       listPostsAdmin();
@@ -154,7 +157,7 @@ function newPost($title, $content)
     $adminManager = new AdminManager();
     $postCreated = $adminManager->createPost($title, $content);
     $postImage = $adminManager->postImage($postCreated);
-    if ($createPost === false) {
+    if ($postCreated === false) {
         throw new Exception('Impossible d\'ajouter le billet !');
     } 
     else {

@@ -85,12 +85,22 @@
         </section>
 
         <footer>
-            <h1>Jean Forteroche</h1>
-            <div id="footer-content">
-	            <p>Plan du site</p>
-	            <p>Suivez-moi sur les réseaux sociaux</p>
-	            <p><a href="#">Mentions légales</a></p>
-        	</div>
+            <div id="contact">
+              <h1>Jean Forteroche</h1>
+              <p>19, rue de Belleville 31000<br><br>
+                0 800 112 205<br><br>
+                jeanforteroche@alaska.com<br>
+              </p>
+            </div>
+            <div id="social">
+              <p>Suivez-moi sur les réseaux sociaux</p>
+              <ul>
+                  <li><a href="#"><img src="public/img/facebook.png" alt="facebook_icon"></a></li>
+                  <li><a href="#"><img src="public/img/instagram.png" alt="instagram_icon"></a></li>
+                  <li><a href="#"><img src="public/img/twitter.png" alt="twitter"></a></li>
+              </ul>
+              <p><a href="index.php?action=mentions">Mentions légales</a></p>
+            </div>
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

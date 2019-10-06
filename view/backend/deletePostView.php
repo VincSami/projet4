@@ -8,6 +8,8 @@
 
 <?php $main_content_title = "Vous êtes sur le point de supprimer définitivement ce billet ainsi que ses commentaires"; ?>
 
+<?php $creation_post = "" ?>
+
 <?php ob_start(); ?>
         <button class="boutonVert"><a href="index.php?action=delete&amp;id=<?= $post['id'] ?>">Supprimer le billet</a></button>
         <button class="boutonRouge"><a href="index.php">Annuler</a></button>

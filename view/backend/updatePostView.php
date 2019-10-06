@@ -10,6 +10,8 @@
 
 <?php $main_content_subtitle = ""; ?>
 
+<?php $creation_post = "" ?>
+
 <?php ob_start(); ?>
     <form action="index.php?action=update&amp;id=<?= $post['id'] ?>" method="post" enctype="multipart/form-data">
 	    <label for="image"><strong>Définir l'image</strong></label><br />

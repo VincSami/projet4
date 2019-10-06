@@ -13,6 +13,14 @@ header{
 	position: relative;
 }
 
+#error_message{
+	margin: 0 auto;
+	text-align: center;
+	margin-top: -25%;
+	color: white;
+	font-size: 3em;
+}
+
 #titre_principal{
 	margin: 0 auto;
 	text-align: center;
@@ -213,6 +221,7 @@ article {
 
 article figure{
 	margin : 5%;
+	margin-bottom: 15%;
 	position: relative;
 	text-decoration: none;
 }
@@ -243,12 +252,19 @@ figcaption{
 	color: white;
 	width: 100%;
 	padding: 5%;
+	height: 70px;
 	transition: 0.5s ease-in;
 }
 
 figcaption a {
 	text-decoration: none;
 	color: white;
+}
+
+figcaption p {
+	margin-top : 0;
+	margin-bottom: 0;
+	font-size: 0.8em;
 }
 
 figcaption a:hover{
@@ -258,7 +274,7 @@ figcaption a:hover{
 
 #deletePostPage, #updatePostPage{
 	position: absolute;
-	bottom : -80px;
+	bottom : -60px;
 	width: 100px;
 }
 
@@ -311,6 +327,9 @@ aside p{
 	aside{
 		display: none;
 	}
+	figcaption {
+	height: 90px;
+	}
 }
 
 #comments{
@@ -319,7 +338,7 @@ aside p{
     width: 60%;
 }
 
-form input[type="submit"]{
+#postComment input[type="submit"]{
 	margin-bottom: 20px;
 }
 
@@ -363,7 +382,7 @@ form input[type="submit"]{
 #commentAdmin{
 	background-color: #EEEEEE;
 	width: 70%;
-  	height : 150px;
+  	height : 200px;
 	position: relative;
 	margin-bottom: 10px;
 	padding: 10px;
@@ -413,14 +432,86 @@ footer{
 	color: white;
 	padding-left: 5%;
 	padding-right: 5%;
-}
-
-footer a{
-	text-decoration: none;
-	color: white;
-}
-
-#footer-content{
 	display: flex;
-	justify-content: space-between;
+    box-shadow: 10px 5px 10px black;
+}
+
+footer span {
+    margin-left: 20px;
+}
+
+footer a {
+    text-align: center;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+}
+
+#social {
+    width: 70%;
+}
+
+#social p {
+    text-align: center
+}
+
+#social ul {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+#social li {
+    margin-right: 40px;
+    margin-left: 15px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+
+@media screen and (min-width : 425px) and (max-width : 800px) {
+    #contact {
+        width: 100%;
+        text-align: center;
+    }
+
+    footer h1 {
+        margin-left: 0px;
+    }
+
+    #contact p {
+        margin-left: 0px;
+    }
+
+    #social {
+        width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width : 425px) {
+    #contact {
+        width: 100%;
+        text-align: center;
+    }
+
+    footer h1 {
+        margin-left: 0px;
+    }
+
+    #contact p {
+        margin-left: 0px;
+    }
+
+    #social {
+        width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
 }

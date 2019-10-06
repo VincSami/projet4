@@ -13,6 +13,8 @@
 <button class="boutonOrange"><a href="index.php?action=goToUpdatePage&amp;id=<?= $post['id'] ?>">Modifier</a></button>
 <?php $main_content_subtitle = ob_get_clean(); ?>
 
+<?php $creation_post = "" ?>
+
 <?php $article_content = $post['content'] ?>
 
 <?php ob_start(); ?>

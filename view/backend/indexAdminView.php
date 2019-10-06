@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-    <img class="fullwidth" src="public/img/alaska_accueil.jpg ?>.jpg">
+    <img class="fullwidth" src="public/img/alaska_accueil.jpg">
 <?php $image_post = ob_get_clean(); ?>
 
 <?php $page_title = 'Bienvenue sur la page d\'administration du site de Jean Forteroche'; ?>
@@ -9,11 +9,13 @@
 <?php $main_content_title = 'Gestion des billets et des commentaires'; ?>
 
 <?php $main_content_subtitle = 'Ecrivez de nouveaux billets, modifiez ou supprimez des billets existants ou encore gérer les commentaires signalés à partir de cette page.'; ?>
-
 <?php ob_start(); ?>
       <div id="newPost">
         <button class="boutonVert"><a href="index.php?action=newPost">Ecrire un nouvel épisode</a></button><br>
       </div>
+<?php $creation_post = ob_get_clean(); ?>
+
+<?php ob_start(); ?>
       <div class="postPresentation">
       <?php
         while ($post = $posts->fetch())

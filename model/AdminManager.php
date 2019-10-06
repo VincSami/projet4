@@ -36,7 +36,13 @@ class AdminManager extends Manager
 	        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
 	        $req->execute(array($postId));
 	        $post = $req->fetch();
-	        return $post;
+	        if(! $post){
+	    	throw new Exception("le billet n'existe pas");
+	    	}
+	    	else {
+			return $post;
+			}
+	        
 	}
   	
   	public function deletePost($postId)
@@ -45,6 +51,13 @@ class AdminManager extends Manager
 	        $req = $db->prepare('DELETE FROM posts WHERE id = ?');
 	        $req->execute(array($postId));
 	        $deletePost = $req->fetch(); 
+
+	        if(! $post){
+	    	throw new Exception("le billet n'existe pas");
+	    	}
+	    	else {
+			return $post;
+			}
 	}
 
   	public function deleteComments($postId)

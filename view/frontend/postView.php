@@ -32,7 +32,7 @@
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong></p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
             <p></strong> le <?= $comment['comment_date_fr'] ?></strong></p>
-            <button class="boutonRouge" id="signalButton"><a href="index.php?action=signal&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $post['id'] ?>">signaler</a></button>
+            <button class="<?= $post['id'] ?> <?= $comment['id'] ?> signalButton boutonRouge">Signaler</button>
         </div>
         <?php
         }

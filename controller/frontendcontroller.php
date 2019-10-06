@@ -17,7 +17,7 @@ function frontendController()
               }
           }     
           elseif ($_GET['action'] == 'post') {
-              post();
+                post();
           }
           elseif ($_GET['action'] == 'addComment') {
               if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -34,6 +34,9 @@ function frontendController()
               } else {
                       throw new Exception('impossible de procéder au signalement !');
                   }
+          }
+          elseif ($_GET['action'] == 'mentions'){
+            require ('view/mentions_legales.php');
           }
   }
   else {
@@ -80,11 +83,5 @@ function addComment($postId, $author, $email, $comment)
 function signalComment($commentId, $postId)
 {
     $commentsManager = new CommentsManager();
-    $signalComment = $commentsManager->badComment($_GET['commentId'], $_GET['postId']);
-    if ($badComment === false){
-      throw new Exception('Impossible d\'ajouter le commentaire !');
-    }
-    else {
-      return 1;
-    }
+    $badComment = $commentsManager->badComment($_GET['commentId'], $_GET['postId']);
 }
