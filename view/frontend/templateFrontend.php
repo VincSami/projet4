@@ -26,12 +26,14 @@
                           Billet simple pour l'Alaska
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="index.php?action=post&amp;id=1">Episode n°1</a>
-                          <a class="dropdown-item" href="index.php?action=post&amp;id=2">Episode n°2</a>
-                          <a class="dropdown-item" href="index.php?action=post&amp;id=3">Episode n°3</a>
-                          <a class="dropdown-item" href="index.php?action=post&amp;id=4">Episode n°4</a>
-                          <a class="dropdown-item" href="index.php?action=post&amp;id=5">Episode n°5</a>
-                          <a class="dropdown-item" href="index.php?action=post&amp;id=6">Episode n°6</a>
+                          <?php 
+                          foreach ($posts as $post)
+                          {
+                          ?>
+                          <a class="dropdown-item" href="index.php?action=post&amp;<?= $post['id'] ?>"> <?= $post['title'] ?> </a>
+                          <?php
+                          }
+                          ?>
                         </div>
                       </li>
                     </ul>

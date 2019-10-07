@@ -7,8 +7,12 @@ class PostManager extends Manager
     public function getPosts()
     {	
     	$db = $this->dbConnect();  
-	    $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC');
-	    return $req;
+	    $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC');
+	    $req->setFetchMode(PDO::FETCH_ASSOC);
+	    $req->execute();
+	    $posts = $req->fetchAll();
+
+	    return $posts;
 	}
 
     public function getPost($postId)

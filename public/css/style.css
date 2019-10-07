@@ -5,20 +5,29 @@
 	font-family: 'Gayathri', sans-serif;
 }
 
-.fullwidth{
-	width: 100%;
-}
+/*------------------------ HEADER --------------------------------- */
 
 header{
 	position: relative;
 }
 
-#error_message{
-	margin: 0 auto;
-	text-align: center;
-	margin-top: -25%;
-	color: white;
-	font-size: 3em;
+.navbar-expand-lg{
+	background-color: none;
+}
+
+#infoSession{
+	display: flex;
+}
+
+#helloAdmin{
+	margin-top: 15px;
+	margin-right: 15px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.fullwidth{
+	width: 100%;
 }
 
 #titre_principal{
@@ -31,6 +40,8 @@ header{
 #titre_principal h1, h2{
 	color: white;
 }
+
+/*RESPONSIVE DESIGN*/
 
 @media screen and (min-width : 800px) and (max-width : 1200px) {
 	#titre_principal h1, h2{
@@ -51,9 +62,7 @@ header{
 	}
 }
 
-.navbar-expand-lg{
-	background-color: none;
-}
+/*------------------------ MISE EN FORME BOUTONS --------------------------------- */
 
 .boutonVert{
 	padding : 10px;
@@ -145,27 +154,11 @@ header{
 	color : white;
 }
 
-#infoSession{
-	display: flex;
-}
-
-#helloAdmin{
-	margin-top: 15px;
-	margin-right: 15px;
-	font-weight: bold;
-	font-size: 1.2em;
-}
+/* ----------------------------------------- MAIN CONTENT ------------------------------ */
 
 #introduction{
 	margin-top: 100px;
 	text-align: center;
-}
-
-@media screen and (max-width : 425px) {
-	#introduction h1{
-		font-size: 1.2em;
-		font-weight: bold;
-	}
 }
 
 #newPost{
@@ -175,18 +168,6 @@ header{
 
 #newPost button{
 	width: 100%;
-}
-
-#postManagement{
-	width: 30%;
-	margin: 0 auto;
-}
-
-#postManagement p {
-	width: 100%;
-	margin: 0 auto;
-	margin-top: 100px;
-	font-size: 2em;
 }
 
 #main_content{
@@ -205,6 +186,15 @@ article {
 	flex-wrap: wrap; 
 }
 
+/*RESPONSIVE DESIGN*/
+
+@media screen and (max-width : 425px) {
+	#introduction h1{
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+}
+
 @media screen and (max-width : 700px) {
 	.postPresentation{
 		margin-top: 50px;
@@ -219,6 +209,8 @@ article {
 	}
 }
 
+/* -------------------------------------------- AFFICHAGE POSTS ACCUEIL ----------------------------------- */
+
 article figure{
 	margin : 5%;
 	margin-bottom: 15%;
@@ -230,18 +222,6 @@ article figure img{
 	width: 300px;
 	height: 200px;
 	box-shadow: 5px 5px 10px black;
-}
-
-@media screen and (max-width : 700px) {
-	article figure{
-		margin: 0 auto;
-		margin-bottom: 25%;
-	}
-
-	article figure img{
-		width: 100%;
-		height: 100%;
-	}
 }
 
 figcaption{
@@ -272,25 +252,30 @@ figcaption a:hover{
 	color: white;
 }
 
-#deletePostPage, #updatePostPage{
-	position: absolute;
-	bottom : -60px;
-	width: 100px;
-}
-
-#updatePostPage{
-	left: 60%;
-}
-
-#deletePostPage{
-	right: 60%;
-}
-
-
 figure:hover figcaption{
 	opacity: 0.6;
 	transition: 0.5s ease-in;
 }
+
+/*RESPONSIVE DESIGN*/
+
+@media screen and (max-width : 700px) {
+	article figure{
+		margin: 0 auto;
+		margin-bottom: 25%;
+	}
+
+	article figure img{
+		width: 100%;
+		height: 100%;
+	}	
+	
+	figcaption {
+	height: 90px;
+	}
+}
+
+/* -------------------------------------------- ASIDE ----------------------------------- */
 
 aside{
 	margin-top: 150px;
@@ -317,6 +302,8 @@ aside p{
 	text-align: justify; 
 }
 
+/*RESPONSIVE DESIGN*/
+
 @media screen and (min-width : 700px) and (max-width : 1200px) {
 	aside{
 		width: 50%;
@@ -327,10 +314,25 @@ aside p{
 	aside{
 		display: none;
 	}
-	figcaption {
-	height: 90px;
-	}
+}	
+
+/* -------------------------------------------- AFFICHAGE POSTS ACCUEIL - ADMIN ----------------------------------- */
+
+#deletePostPage, #updatePostPage{
+	position: absolute;
+	bottom : -60px;
+	width: 100px;
 }
+
+#updatePostPage{
+	left: 60%;
+}
+
+#deletePostPage{
+	right: 60%;
+}
+
+/* -------------------------------------------- SECTION COMMENTAIRES ----------------------------------- */
 
 #comments{
 	margin-left: 5%;
@@ -355,10 +357,26 @@ aside p{
 	background-color: #dbd9d9;
 }
 
+#comment button{
+    position: absolute;
+    right: 2%;
+    opacity: 0;
+    top: 10%;
+    opacity: 0;
+    background-color: #DBD9D9;
+}
+
 #comment:hover button {
 	opacity: 1;
 }
 
+#comment button:hover  {
+	background-color: red;
+}
+
+#comment p:nth-child(2) {
+	margin-top : 20px;
+}
 
 #comment p:nth-child(3) {
 	position: absolute;
@@ -366,18 +384,7 @@ aside p{
   	bottom : 0;
 }
 
-#comment p:nth-child(2) {
-	margin-top : 20px;
-}
-
-#comment button{
-	color: #DBD9D9;
-	position: absolute;
-    right: 2%;
-    opacity: 0;
-    top: 10%;
-	opacity: 0;
-}
+/* -------------------------------------------- SECTION COMMENTAIRES - ADMIN ----------------------------------- */
 
 #commentAdmin{
 	background-color: #EEEEEE;
@@ -404,6 +411,8 @@ aside p{
 	opacity: 0;
 }
 
+/*RESPONSIVE DESIGN*/
+
 @media screen and (max-width : 1200px) {
  	 #comments{
   		width : 90%;
@@ -424,6 +433,8 @@ aside p{
       	height: 250px;
   	}
 }
+
+/* -------------------------------------------- FOOTER ----------------------------------- */
 
 footer{
 	background-color: #ad1f26;
@@ -469,6 +480,7 @@ footer a {
     margin-top: 30px;
 }
 
+/*RESPONSIVE DESIGN*/
 
 @media screen and (min-width : 425px) and (max-width : 800px) {
     #contact {
@@ -514,4 +526,14 @@ footer a {
     footer {
         flex-direction: column;
     }
+}
+
+/* -------------------------------------------- PAGE ERREUR ----------------------------------- */
+
+#error_message{
+	margin: 0 auto;
+	text-align: center;
+	margin-top: -25%;
+	color: white;
+	font-size: 3em;
 }

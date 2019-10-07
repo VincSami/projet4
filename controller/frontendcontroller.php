@@ -1,9 +1,11 @@
 <?php
 
+//Récupération des fonctions nécesaires dans le model
 require_once('model/PostManager.php');
 require_once('model/CommentsManager.php');
 require_once('model/AdminManager.php');
 
+//Déclenchement des fonctions selon l'action
 function frontendController()
 {
   if (isset($_GET['action'])) { 
@@ -44,12 +46,14 @@ function frontendController()
   }
 }
 
+//connexion de l'Admin
 function connectAdministrator()
 {
     $adminManager = new AdminManager();
     $connectAdministrator = $adminManager->connectAdmin($_POST['pseudo'], $_POST['password']);
 }
 
+//Affichage des posts sur la page d'acceuil visiteur
 function listPosts()
 {
     $postManager = new PostManager();
@@ -57,6 +61,7 @@ function listPosts()
     require('view/frontend/indexView.php');
 }
 
+//Affichage du post sélectionné
 function post()
 {
     $postManager = new PostManager();
@@ -68,6 +73,7 @@ function post()
     require('view/frontend/postView.php');
 }
 
+//Ajout d'un commentaire
 function addComment($postId, $author, $email, $comment)
 {
     $commentsManager = new CommentsManager();
@@ -80,6 +86,7 @@ function addComment($postId, $author, $email, $comment)
     }
 }
 
+//Signalement d'un commentaire existant
 function signalComment($commentId, $postId)
 {
     $commentsManager = new CommentsManager();

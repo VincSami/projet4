@@ -13,16 +13,14 @@
 <?php ob_start(); ?>
       <div class="postPresentation">
       <?php
-        while ($post = $posts->fetch())
-        {
+      foreach($posts as $post) {
       ?>
             <figure><a href="index.php?action=post&amp;id=<?= $post['id'] ?>">
             <img src="public/img/episode<?= $post['id'] ?>.jpg">
             <figcaption>Billet simple pour l'Alaska<br><?= ($post['title']) ?></figcaption>
             </a></figure>
       <?php
-        }
-      $posts->closeCursor();
+      }
       ?>    
       </div>  
 <?php $article_content = ob_get_clean(); ?>

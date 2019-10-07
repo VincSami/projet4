@@ -18,7 +18,7 @@
 <?php ob_start(); ?>
       <div class="postPresentation">
       <?php
-        while ($post = $posts->fetch())
+         foreach($posts as $post) 
         {
       ?>
             <figure><a href="index.php?action=postAdmin&amp;id=<?= $post['id'] ?>">
@@ -31,7 +31,6 @@
             </figure>
       <?php
         }
-      $posts->closeCursor();
       ?>   
       </div>   
 <?php $article_content = ob_get_clean(); ?>
