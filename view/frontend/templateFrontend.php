@@ -30,7 +30,7 @@
                           foreach ($posts as $post)
                           {
                           ?>
-                          <a class="dropdown-item" href="index.php?action=post&amp;<?= $post['id'] ?>"> <?= $post['title'] ?> </a>
+                          <a class="dropdown-item" href="index.php?action=post&amp;id=<?= $post['id'] ?>"> <?= $post['title'] ?> </a>
                           <?php
                           }
                           ?>
@@ -56,8 +56,8 @@
         </header>
 
         <section id="introduction">
-        	<h1><?= $main_content_title ?></h1>
-        	<p><?= $main_content_subtitle ?></p>
+          <h1><?= $main_content_title ?></h1>
+          <p><?= $main_content_subtitle ?></p>
         </section> 
 
         <section id="main_content">

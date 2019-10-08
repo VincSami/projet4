@@ -58,7 +58,7 @@ function backendController()
               }
           }
           elseif ($_GET['action'] == 'newPost') {
-              require('view/backend/createPostView.php');
+            postCreation();
           }
           elseif ($_GET['action'] == 'createPost') {
               if (!empty($_POST['title']) && (!empty($_POST['content']))){
@@ -91,9 +91,12 @@ function listPostsAdmin()
 //Lecture billet Administrateur
 function postAdmin()
 {
+    $postManager = new PostManager();
+    $posts = $postManager->getPosts();  
+    
     $adminManager = new AdminManager();
     $commentsManager = new CommentsManager();
-    
+
     $post = $adminManager->getPostAdmin($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
     require('view/backend/postAdminView.php');
@@ -101,10 +104,11 @@ function postAdmin()
 
 //Page de suppression du billet et des commentaires
 function deletePostAdmin()
-{
+{ 
     $postManager = new PostManager();
     $commentsManager = new CommentsManager();
 
+    $posts = $postManager->getPosts();  
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
     require('view/backend/deletePostView.php');
@@ -113,7 +117,9 @@ function deletePostAdmin()
 //Suppression du billet et des commentaires
 function erasePost($postId)
 {
-    $adminManager = new AdminManager();
+    $postManager = new PostManager();
+    $posts = $postManager->getPosts();
+  $adminManager = new AdminManager();
     $deletePost = $adminManager->deletePost($postId);
     $deleteComments = $adminManager->deleteComments($postId);
     header("Location:index.php");
@@ -131,7 +137,8 @@ function updatePostAdmin()
 {
     $postManager = new PostManager();
     $commentsManager = new CommentsManager();
-
+  
+    $posts = $postManager->getPosts();
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
     require('view/backend/updatePostView.php');
@@ -140,6 +147,9 @@ function updatePostAdmin()
 //Modification du billet
 function updatePost($title, $content, $postId)
 {
+    $postManager = new PostManager();
+    $posts = $postManager->getPosts();
+    
     $adminManager = new AdminManager();
     $updatedPost = $adminManager->modifyPost($title, $content, $postId);
     $postImage = $adminManager->postImage($postId);
@@ -151,9 +161,18 @@ function updatePost($title, $content, $postId)
     }
 }
 
+function postCreation()
+{
+  $postManager = new PostManager();
+  $posts = $postManager->getPosts();
+  require('view/backend/createPostView.php');
+}
 //Création d'un nouveau billet
 function newPost($title, $content)
 {
+    $postManager = new PostManager();
+    $posts = $postManager->getPosts();  
+    
     $adminManager = new AdminManager();
     $postCreated = $adminManager->createPost($title, $content);
     $postImage = $adminManager->postImage($postCreated);

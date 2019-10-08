@@ -159,6 +159,7 @@ header{
 #introduction{
 	margin-top: 100px;
 	text-align: center;
+	padding: 5%;
 }
 
 #newPost{
@@ -201,7 +202,7 @@ article {
 		display: block;
 	}
 	article{
-		width: 100%;
+		margin: 0 auto;
 	}
 
 	article figure{
@@ -312,7 +313,10 @@ aside p{
 
 @media screen and (max-width : 700px) {
 	aside{
-		display: none;
+		width: 100%;
+	}
+	#main_content{
+	display: block;
 	}
 }	
 

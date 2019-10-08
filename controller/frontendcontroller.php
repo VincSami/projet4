@@ -68,6 +68,7 @@ function post()
     $commentsManager = new CommentsManager();
 
     $post = $postManager->getPost($_GET['id']);
+    $posts = $postManager->getPosts();  
     $comments = $commentsManager->getComments($_GET['id']);
 
     require('view/frontend/postView.php');
