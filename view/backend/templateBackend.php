@@ -86,16 +86,16 @@
             <div id="contact">
               <h1>Jean Forteroche</h1>
               <p>19, rue de Belleville 31000<br><br>
-                0 800 112 205<br><br>
-                jeanforteroche@alaska.com<br>
+                <a href= "callto:0800112205">0 800 112 205</a><br><br>
+                <a href= "mailto:jeanforteroche@alaska.com">jeanforteroche@alaska.com</a><br>
               </p>
             </div>
             <div id="social">
               <p>Suivez-moi sur les réseaux sociaux</p>
               <ul>
-                  <li><a href="#"><img src="public/img/facebook.png" alt="facebook_icon"></a></li>
-                  <li><a href="#"><img src="public/img/instagram.png" alt="instagram_icon"></a></li>
-                  <li><a href="#"><img src="public/img/twitter.png" alt="twitter"></a></li>
+                  <li><a href="https://www.facebook.com/"><img src="public/img/facebook.png" alt="facebook_icon"></a></li>
+                  <li><a href="https://www.instagram.com/"><img src="public/img/instagram.png" alt="instagram_icon"></a></li>
+                  <li><a href="https://twitter.com/?lang=fr"><img src="public/img/twitter.png" alt="twitter"></a></li>
               </ul>
               <p><a href="index.php?action=mentions">Mentions légales</a></p>
             </div>

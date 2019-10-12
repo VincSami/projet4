@@ -51,13 +51,6 @@ class AdminManager extends Manager
 	        $req = $db->prepare('DELETE FROM posts WHERE id = ?');
 	        $req->execute(array($postId));
 	        $deletePost = $req->fetch(); 
-
-	        if(! $post){
-	    	throw new Exception("le billet n'existe pas");
-	    	}
-	    	else {
-			return $post;
-			}
 	}
 
   	public function deleteComments($postId)
@@ -103,7 +96,7 @@ class AdminManager extends Manager
                 $extension_upload = $infosfichier['extension'];
                 $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($extension_upload, $extensions_autorisees)){
-                	move_uploaded_file($_FILES['image']['tmp_name'], 'C:\wamp64\www\projet4\public\img\episode' . $postId . "." . $extension_upload);
+                	move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/episode' . $postId . "." . $extension_upload);
                 }
 	    	}
 		}

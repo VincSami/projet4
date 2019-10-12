@@ -26,9 +26,10 @@ const signalButtons = document.querySelectorAll(".signalButton");
 
 signalButtons.forEach(function (item) {
 	item.addEventListener("click", function (e) {
-		var commentId = item.classList[1];
-		var postId = item.classList[0];
-		var req = new XMLHttpRequest();
+        var postId= item.dataset["post"];
+  		var commentId = item.dataset["comment"];
+  		console.log(commentId);
+      	var req = new XMLHttpRequest();
 		req.open("GET", "index.php?action=signal&postId=" + postId + "&commentId=" + commentId);
 		req.addEventListener("load", function () {
 			if (req.status >= 200 && req.status < 400) { 

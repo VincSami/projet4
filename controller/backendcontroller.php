@@ -30,12 +30,9 @@ function backendController()
               }
           }
           elseif ($_GET['action'] == 'delete') {
-              if (isset($_GET['id']) && $_GET['id'] > 0) {
-                  erasePost($_GET['id']);
-              }  
-              else {
-                  throw new Exception("aucun identifiant de billet envoyé");
-              }
+            if (isset($_GET['id']) && $_GET['id'] > 0) {  
+              erasePost($_GET['id']);
+            }
           }
           elseif ($_GET['action'] == 'goToUpdatePage') {
               if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -58,7 +55,7 @@ function backendController()
               }
           }
           elseif ($_GET['action'] == 'newPost') {
-            postCreation();
+              postCreation();
           }
           elseif ($_GET['action'] == 'createPost') {
               if (!empty($_POST['title']) && (!empty($_POST['content']))){
@@ -122,7 +119,7 @@ function erasePost($postId)
   $adminManager = new AdminManager();
     $deletePost = $adminManager->deletePost($postId);
     $deleteComments = $adminManager->deleteComments($postId);
-    header("Location:index.php");
+    header('Location:index.php');
 }
 
 //Suppression d'un commentaire
@@ -138,7 +135,7 @@ function updatePostAdmin()
     $postManager = new PostManager();
     $commentsManager = new CommentsManager();
   
-    $posts = $postManager->getPosts();
+  $posts = $postManager->getPosts();
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentsManager->getComments($_GET['id']);
     require('view/backend/updatePostView.php');
@@ -157,7 +154,7 @@ function updatePost($title, $content, $postId)
         throw new Exception('Impossible de modifier le billet !');
     } 
     else {
-        header('Location: index.php');
+        header('Location: index.php?action=postAdmin&id=' . $postId);
     }
 }
 
@@ -167,6 +164,7 @@ function postCreation()
   $posts = $postManager->getPosts();
   require('view/backend/createPostView.php');
 }
+
 //Création d'un nouveau billet
 function newPost($title, $content)
 {
