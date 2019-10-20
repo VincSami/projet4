@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-    <img class="fullwidth" src="public/img/episode<?= $post['id'] ?>.jpg">
+    <img class="fullwidth" src="public/img/episode<?= $post['id'] ?>.jpg" alt="image alaska épisode">
 <?php $image_post = ob_get_clean(); ?>
 
 <?php $page_title = "Billet simple pour l'Alaska" ?>
@@ -16,11 +16,11 @@
         <h2>Commentaires</h2>
         <form id="postComment" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
                 <label for="author">Auteur</label><br />
-                <input type="text" id="author" name="author" placeholder="Votre pseudo" /><br><br>
+                <input type="text" id="author" name="author" placeholder="Votre pseudo" required /><br><br>
                 <label for="email">Email</label><br />
-                <input type="email" id="email" name="email" placeholder="Votre email" /><br><br>
+                <input type="email" id="email" name="email" placeholder="Votre email" required /><br><br>
                 <label for="comment">Commentaire</label><br />
-                <textarea id="commentPost" name="comment" placeholder="Votre commentaire"></textarea><br>
+                <textarea id="commentPost" name="comment" placeholder="Votre commentaire" required></textarea><br>
                 <input class="boutonVert" type="submit" value="Valider"/>
         </form>
 
@@ -32,7 +32,7 @@
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong></p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
             <p></strong> le <?= $comment['comment_date_fr'] ?></strong></p>
-            <button data-post="<?= $post['id'] ?>" data-comment="<?= $comment['id'] ?>" class="signalButton boutonRouge">Signaler</button>
+            <button data-comment="<?= $comment['id'] ?>" class="signalButton boutonRouge">Signaler</button>
         </div>
         <?php
         }

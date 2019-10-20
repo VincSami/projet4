@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <title>Jean Forteroche</title>
@@ -56,17 +56,19 @@
         </header>
 
         <section id="introduction">
-          <h1><?= $main_content_title ?></h1>
+          <h2><?= $main_content_title ?></h2>
           <p><?= $main_content_subtitle ?></p>
         </section> 
 
         <section id="main_content">
+          <h2 class="hide">Main content</h2>
           <article>
+            <h2 class="hide">Article</h2>
           <?= $article_content ?>
           </article>
           <aside>
-            <img src="public/img/avatar.jpg">
-            <h1>Jean Forteroche</h1>
+            <img src="public/img/avatar.jpg" alt="portrait auteur">
+            <h2>Jean Forteroche</h2>
             <p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -83,12 +85,13 @@
         </section>
 
         <section id="comments">
+          <h2 class="hide">Commentaires</h2>
           <?= $comment_content ?>
         </section>
 
         <footer>
             <div id="contact">
-              <h1>Jean Forteroche</h1>
+              <h2>Jean Forteroche</h2>
               <p>19, rue de Belleville 31000<br><br>
                 <a href= "callto:0800112205">0 800 112 205</a><br><br>
                 <a href= "mailto:jeanforteroche@alaska.com">jeanforteroche@alaska.com</a><br>
@@ -108,6 +111,6 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="public/js/frontend.js"></script>
+        <script src="public/js/frontend.js"></script>
     </body>
 </html>

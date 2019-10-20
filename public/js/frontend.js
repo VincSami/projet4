@@ -26,11 +26,9 @@ const signalButtons = document.querySelectorAll(".signalButton");
 
 signalButtons.forEach(function (item) {
 	item.addEventListener("click", function (e) {
-        var postId= item.dataset["post"];
   		var commentId = item.dataset["comment"];
-  		console.log(commentId);
       	var req = new XMLHttpRequest();
-		req.open("GET", "index.php?action=signal&postId=" + postId + "&commentId=" + commentId);
+		req.open("GET", "index.php?action=signal&commentId=" + commentId);
 		req.addEventListener("load", function () {
 			if (req.status >= 200 && req.status < 400) { 
 			    item.innerHTML = "Commentaire signalé";

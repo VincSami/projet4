@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-  <img class="fullwidth" src="public/img/alaska_accueil.jpg">
+  <img class="fullwidth" src="public/img/alaska_accueil.jpg" alt="image alaska acceuil">
 <?php $image_post = ob_get_clean(); ?>
 
 <?php $page_title = 'Bienvenue sur le site de Jean Forteroche'; ?>
@@ -16,9 +16,9 @@
       foreach($posts as $post) {
       ?>
             <figure><a href="index.php?action=post&amp;id=<?= $post['id'] ?>">
-            <img src="public/img/episode<?= $post['id'] ?>.jpg">
+            <img src="public/img/episode<?= $post['id'] ?>.jpg" alt="image alaska épisodes"></a>
             <figcaption>Billet simple pour l'Alaska<br><?= ($post['title']) ?></figcaption>
-            </a></figure>
+            </figure>
       <?php
       }
       ?>    

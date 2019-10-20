@@ -34,7 +34,7 @@ function frontendController()
           }
           elseif ($_GET['action'] == 'signal') {
               if (isset($_GET['commentId']) && $_GET['commentId'] > 0){
-                      signalComment($_GET['commentId'], $_GET['postId']);
+                      signalComment($_GET['commentId']);
               } else {
                       throw new Exception('impossible de procéder au signalement !');
                   }
@@ -79,6 +79,10 @@ function post()
 //Ajout d'un commentaire
 function addComment($postId, $author, $email, $comment)
 {
+    $postManager = new PostManager();
+    if (!$postManager->isPostExist($postId)){
+      throw new Exception('Impossible d\'ajouter le commentaire !');
+    }
     $commentsManager = new CommentsManager();
     $affectedLines = $commentsManager->postComment($postId, $author, $email, $comment);
     if ($affectedLines === false) {
@@ -90,8 +94,14 @@ function addComment($postId, $author, $email, $comment)
 }
 
 //Signalement d'un commentaire existant
-function signalComment($commentId, $postId)
+function signalComment($commentId)
 {
     $commentsManager = new CommentsManager();
-    $badComment = $commentsManager->badComment($_GET['commentId'], $_GET['postId']);
+    $badComment = $commentsManager->badComment($commentId);
+    if ($badComment === false) {
+        throw new Exception('Impossible de signaler le commentaire !');
+    }
+    else{
+      return true;
+    }
 }

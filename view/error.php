@@ -9,7 +9,7 @@
     </head>
     <body>
         <header>
-			<img class="fullwidth" src="public/img/alaska_accueil.jpg">
+			<img class="fullwidth" src="public/img/alaska_accueil.jpg" alt="image alaska épisode">
             <div id="error_message">
     		<h1><?php echo 'Oups ! ' . $e->getMessage();?></h1>
           </div>

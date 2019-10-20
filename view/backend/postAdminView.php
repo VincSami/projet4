@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-    <img class="fullwidth" src="public/img/episode<?= $post['id'] ?>.jpg">
+    <img class="fullwidth" src="public/img/episode<?= $post['id'] ?>.jpg" alt="image alaska épisode">
 <?php $image_post = ob_get_clean(); ?>
 
 <?php $page_title = "Page d'administration du site de Jean Forteroche" ?>
